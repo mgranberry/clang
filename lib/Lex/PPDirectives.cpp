@@ -645,10 +645,14 @@ TryAgain:
 
     // C99 6.10.2 - Source File Inclusion.
     case tok::pp_include:
+      // MBG don't handle #include
+      break;
       // Handle #include.
       return HandleIncludeDirective(SavedHash.getLocation(), Result);
     case tok::pp___include_macros:
-      // Handle -imacros.
+      // MBG don't handle #include
+      break; 
+     // Handle -imacros.
       return HandleIncludeMacrosDirective(SavedHash.getLocation(), Result); 
 
     // C99 6.10.3 - Macro Replacement.
@@ -671,8 +675,12 @@ TryAgain:
 
     // GNU Extensions.
     case tok::pp_import:
+      // MBG don't handle #include
+      break;
       return HandleImportDirective(SavedHash.getLocation(), Result);
     case tok::pp_include_next:
+      // MBG don't handle #include
+      break;
       return HandleIncludeNextDirective(SavedHash.getLocation(), Result);
 
     case tok::pp_warning:
